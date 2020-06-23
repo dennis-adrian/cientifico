@@ -43,7 +43,7 @@ module.exports = {
     },
     //establecemos los plugins a utilizar
     plugins: [
-        new HtmlWebpackPlugin([
+        new HtmlWebpackPlugin(
             {
                 inject: true,
                 //indicamos dónde se encuentra el tamplate principal o tamplate base de html
@@ -51,6 +51,6 @@ module.exports = {
                 //indicamos el nombre con el que vamos a guardar el template
                 filename: './index.html',
             }
-        ])
+        ),
     ]
 }
