@@ -1,0 +1,31 @@
+language: node_js
+# configuramos la cache 
+cache:
+  directories:
+    - ~/.npm
+# Definimos la version de node
+node_js:
+  - '12'
+# Va a utilizar git y va a profundizar hasta el 3er nivel
+git:
+  depth: 3
+# indicamos que script va a utilizar
+script:
+  - yarn build
+deploy:
+  # indicamos que nuestro deploy va a vivir en pages (Github pages)
+  provider: pages
+  # edge nos permite manejar un sistema de control de las versiones y como acceder a ellas
+  edge: true,
+  skip-cleanup : true
+  keep-history: true
+  # utilizamos el token que creamos en github anteriormente
+  github-token: $GITHUB_TOKEN
+  # indicamos el directorio sobre el cuál vamos a trabajar
+  local_dir: dist/
+  # este es el branch sobre el cuál vamos a guardar estos elementos
+  target-branch: gh-pages
+  commit_message: "Deploy Release"
+  on:
+  # le decimos sobre quién va a actuar 
+    branch: master

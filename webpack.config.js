@@ -5,6 +5,7 @@
 const path = require('path');
 //agragamos el archivo necesario para trabajar con html y este lo obtenemos del paquete que instalamos
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     //punto de entrada del proyecto
@@ -52,5 +53,11 @@ module.exports = {
                 filename: './index.html',
             }
         ),
+        new CopyWebpackPlugin({
+            patterns: [{
+                from: './src/styles/styles.css',
+                to: ''
+            }],
+        })
     ]
 }
